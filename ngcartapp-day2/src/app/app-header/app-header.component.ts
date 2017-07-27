@@ -8,6 +8,8 @@ export class AppHeaderComponent implements OnInit {
 
   constructor() { }
 
+  cmpHeading:string = "My Shopping Cart App Application";
+
   ngOnInit() {
   }
 
