@@ -25,4 +25,9 @@ export class ProductService {
   deleteProduct(id:string){
     return this.ht.delete(this.restUrl+"/"+id,this.options);
   }
+
+  getProductById(id:string){
+    return this.ht.get(this.restUrl+"/"+id);
+  }
+
 }

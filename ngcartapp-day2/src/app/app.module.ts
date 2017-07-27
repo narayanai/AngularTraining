@@ -8,11 +8,17 @@ import {HomeComponent, ListComponent, ManageProductComponent, NotFoundComponent}
 import {RouterModule} from "@angular/router";
 import {HttpModule} from "@angular/http";
 import {FormsModule} from "@angular/forms";
+import {ReversePipe} from "./app.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppHeaderComponent, HomeComponent, ListComponent, NotFoundComponent, ManageProductComponent
+    AppHeaderComponent,
+    HomeComponent,
+    ListComponent,
+    NotFoundComponent,
+    ManageProductComponent,
+    ReversePipe
   ],
   imports: [
     BrowserModule, ShoppingModule, RouterModule.forRoot([
