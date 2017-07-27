@@ -1,0 +1,17 @@
+<label>Product List</label>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let p of products">
+    <td>{{p.name}}</td>
+    <td>{{p.price}}</td>
+    <td><button class="btn btn-primary" (click)="addtoCart(p)">Add to cart</button></td>
+    <td hidden="true">{{p.id}}</td>
+  </tr>
+  <tr *ngIf="products.length == 0">
+    <td colspan="3">No products found !</td>
+  </tr>
+</table>
