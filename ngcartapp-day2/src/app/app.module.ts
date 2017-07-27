@@ -6,6 +6,8 @@ import { AppHeaderComponent } from './app-header/app-header.component';
 import {ShoppingModule} from "./shopping/shopping.module";
 import {HomeComponent, ListComponent, ManageProductComponent, NotFoundComponent} from "./router/route.component";
 import {RouterModule} from "@angular/router";
+import {HttpModule} from "@angular/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,8 +20,7 @@ import {RouterModule} from "@angular/router";
       {path:"list",component:ListComponent},
       {path:"manage",component:ManageProductComponent},
       {path:"**",component:NotFoundComponent}
-
-    ])
+    ]),HttpModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

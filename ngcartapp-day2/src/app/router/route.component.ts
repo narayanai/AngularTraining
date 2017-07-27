@@ -34,8 +34,40 @@ export class NotFoundComponent {}
 
 export class ManageProductComponent {
   mcproducts:Product[] = [];
+  formProduct:Product = new Product("","",0,"");
 
   constructor(private ps:ProductService) {
-    this.mcproducts = ps.getProducts();
+    ps.getProducts().subscribe((data)=>this.mcproducts = data.json(),
+      (err)=> console.log("Error", err)
+    );
+  }
+
+  saveProduct(){
+    this.ps.addProduct(this.formProduct).subscribe(
+      (resp)=> {
+        console.log(this.formProduct);
+        if(this.formProduct.id == "") {
+          this.mcproducts.push(resp.json())
+        } else {
+          let ind = this.mcproducts.findIndex(x=>x.id === this.formProduct.id);
+          this.mcproducts[ind]=resp.json();
+        }
+
+        this.formProduct = new Product("","",0,"");
+      },
+          (err)=> console.log("Error", err)
+    )
+  }
+
+  delete(index:string, i:number){
+    this.ps.deleteProduct(index).subscribe(
+      (resp)=>this.mcproducts.splice(i,1),
+      (err)=>console.log("Delete error", err)
+    )
+  }
+
+  edit(selectedProduct:Product){
+    //this.formProduct = selectedProduct;
+    Object.assign(this.formProduct, selectedProduct);
   }
 }
